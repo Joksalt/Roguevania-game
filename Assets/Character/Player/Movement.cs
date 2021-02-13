@@ -58,15 +58,15 @@ public class Movement : MonoBehaviour
 
         rBody.velocity = new Vector2(Mathf.Clamp(rBody.velocity.x, ForceClamp * -1, ForceClamp), rBody.velocity.y);
 
-        if (Input.GetKey(KeyCode.W) && grounded)
+        if (Input.GetKey(KeyCode.Space) && grounded)
         {
-            print("?");
             rBody.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
             grounded = false;
             animator.SetBool("Landed", false);
         }
 
-        print(rBody.velocity.y);
+        //lol
+
         animator.SetFloat("YVelocity", rBody.velocity.y);
     }
 }
