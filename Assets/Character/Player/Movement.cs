@@ -25,9 +25,11 @@ public class Movement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         print("Collided");
-        if (collision.gameObject == Ground)
+        //print(collision.gameObject.name);
+        if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            //Debug.Log("TEST");
             animator.SetBool("Landed", true);
         }
     }
