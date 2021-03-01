@@ -240,6 +240,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpForce: 80
   Speed: 5000
+  dashTime: 0.2
+  dashSpeed: 20
+  distanceBetweenImages: 0.1
+  dashCooldown: 2
   ForceClamp: 20
   Ground: {fileID: 0}
 --- !u!114 &-5749539502643743523
