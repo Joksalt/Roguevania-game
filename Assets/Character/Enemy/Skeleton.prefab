@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 965667457477590924}
   m_Layer: 10
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  force: 0
+  stoppingDistance: 1.5
 --- !u!61 &4443811635807279372
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,6 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  force: 0
+  stoppingDistance: 1.5
 --- !u!50 &965667457477590924
 Rigidbody2D:
   serializedVersion: 4

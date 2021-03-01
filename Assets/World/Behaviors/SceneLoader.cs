@@ -32,6 +32,7 @@ public class SceneLoader : MonoBehaviour
 
     void LoadScene()
     {
+        print("test");
         if (useIntegerToLoadLevel)
         {
             SceneManager.LoadScene(iLevelToLoad);
