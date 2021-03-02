@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
 
     public GameObject Ground;
 
+    public FireballSpell Spell;
+
     private Rigidbody2D rBody;
     private Animator animator;
     private bool grounded = true;
@@ -45,7 +47,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(dashTimeLeft);
+        //Debug.Log(dashTimeLeft);
         facingDirection = Input.GetAxisRaw("Horizontal");
         float hForce = facingDirection * Speed * Time.deltaTime;
 
@@ -86,7 +88,6 @@ public class Movement : MonoBehaviour
                 AttemptToDash();
             }
         }
-        //lol
 
         CheckDash();
 
@@ -110,8 +111,7 @@ public class Movement : MonoBehaviour
         {
             if(dashTimeLeft > 0)
             {
-                //canMove = false;
-                //canFlip = false;
+                //print(Time.time);
                 rBody.velocity = new Vector2(dashSpeed * facingDirection, rBody.velocity.y);
                 dashTimeLeft -= Time.deltaTime;
 
@@ -124,9 +124,9 @@ public class Movement : MonoBehaviour
 
             if(dashTimeLeft <= 0)
             {
+                print("Dash ended");
+                Spell.Scatter();
                 isDashing = false;
-                //canMove = true;
-                //canFLip = true;
             }
         }
     }
