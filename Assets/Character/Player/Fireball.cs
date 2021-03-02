@@ -16,16 +16,9 @@ public class Fireball : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-
-        
         Enemy enemy = hitInfo.GetComponent<Enemy>();
 
-        if(hitInfo.tag == "Enemy")
-        {
-            enemy.TakeDamage(Damage);
-        }
-
-        if(enemy != null)
+        if(hitInfo.tag == "Enemy" && enemy != null)
         {
             enemy.TakeDamage(Damage);
         }
