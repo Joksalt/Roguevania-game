@@ -1693,6 +1693,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 428473254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &310948132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847,
+    type: 3}
+  m_PrefabInstance: {fileID: 428473254}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310948131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cb7c19c8df12241ae59324e15086d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &310948141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7937758992311405231, guid: f1fd216807b4dc14f8dd6ffd87943847,
@@ -1766,11 +1778,48 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointDL
+      value: 
+      objectReference: {fileID: 8156610}
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointDR
+      value: 
+      objectReference: {fileID: 1924326778}
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointUL
+      value: 
+      objectReference: {fileID: 1290296765}
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointUR
+      value: 
+      objectReference: {fileID: 1492598937}
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointUp
+      value: 
+      objectReference: {fileID: 410779891}
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointDown
+      value: 
+      objectReference: {fileID: 1271452352}
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointLeft
+      value: 
+      objectReference: {fileID: 579224666}
+    - target: {fileID: 310948132, guid: f1fd216807b4dc14f8dd6ffd87943847, type: 3}
+      propertyPath: firePointRight
+      value: 
+      objectReference: {fileID: 1275799821}
     - target: {fileID: 7937758992311405225, guid: f1fd216807b4dc14f8dd6ffd87943847,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7937758992311405228, guid: f1fd216807b4dc14f8dd6ffd87943847,
+        type: 3}
+      propertyPath: Spell
+      value: 
+      objectReference: {fileID: 310948132}
     - target: {fileID: 7937758992311405231, guid: f1fd216807b4dc14f8dd6ffd87943847,
         type: 3}
       propertyPath: m_RootOrder

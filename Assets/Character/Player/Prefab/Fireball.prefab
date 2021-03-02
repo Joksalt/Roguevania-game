@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5908785291912603437}
   - component: {fileID: 8378860444289872790}
   - component: {fileID: -8872438059102559285}
+  - component: {fileID: 4245417877588031115}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -136,3 +137,15 @@ MonoBehaviour:
   Speed: 10
   Damage: 40
   rb: {fileID: 5908785291912603437}
+--- !u!122 &4245417877588031115
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354141383824870943}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278246885
+  m_Size: 50

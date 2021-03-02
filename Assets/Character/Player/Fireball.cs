@@ -24,7 +24,11 @@ public class Fireball : MonoBehaviour
             enemy.TakeDamage(Damage);
         }
 
-        Destroy(gameObject);
+        if(hitInfo.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 

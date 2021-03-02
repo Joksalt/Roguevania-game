@@ -39,5 +39,6 @@ public class FireballSpell : MonoBehaviour
         Instantiate(fireBallPrefab, firePointUR.position, firePointUR.rotation);
         Instantiate(fireBallPrefab, firePointDL.position, firePointDL.rotation);
         Instantiate(fireBallPrefab, firePointDR.position, firePointDR.rotation);
+        print("TESSSSST");
     }
 }
