@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,6 @@ public class Fireball : MonoBehaviour
 
         
         Enemy enemy = hitInfo.GetComponent<Enemy>();
-        Debug.Log("Sucki dickie");
 
         if(hitInfo.tag == "Enemy")
         {
