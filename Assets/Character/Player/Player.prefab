@@ -278,6 +278,7 @@ MonoBehaviour:
   dashCooldown: 2
   ForceClamp: 20
   Ground: {fileID: 0}
+  Spell: {fileID: 310948132}
 --- !u!114 &-5749539502643743523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,5 +325,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7595778662239109032}
+  firePointUp: {fileID: 0}
+  firePointDown: {fileID: 0}
+  firePointLeft: {fileID: 0}
+  firePointRight: {fileID: 0}
+  firePointUL: {fileID: 0}
+  firePointUR: {fileID: 0}
+  firePointDL: {fileID: 0}
+  firePointDR: {fileID: 0}
   fireBallPrefab: {fileID: 1354141383824870943, guid: 7c704e9c9f18dad47957347886f8c1f7,
     type: 3}
