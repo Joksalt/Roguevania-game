@@ -6,15 +6,26 @@ public class Movement : MonoBehaviour
 {
     public float JumpForce = 800.0f;
     public float Speed = 1.0f;
+    public float dashTime;
+    public float dashSpeed;
+    public float distanceBetweenImages;
+    public float dashCooldown;
 
     [Range(0.0f, 1000.0f)]
     public float ForceClamp = 0.0f;
 
     public GameObject Ground;
 
+    public FireballSpell Spell;
+
     private Rigidbody2D rBody;
     private Animator animator;
     private bool grounded = true;
+    private bool isDashing = false;
+    private float dashTimeLeft;
+    private float lastImageXpos;
+    private float lastDash = -100;
+    private float facingDirection;
 
     void Start()
     {
@@ -36,7 +47,9 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        float hForce = Input.GetAxisRaw("Horizontal") * Speed * Time.deltaTime;
+        //Debug.Log(dashTimeLeft);
+        facingDirection = Input.GetAxisRaw("Horizontal");
+        float hForce = facingDirection * Speed * Time.deltaTime;
 
         if (hForce == 0.0f)
         {
@@ -67,8 +80,54 @@ public class Movement : MonoBehaviour
             animator.SetBool("Landed", false);
         }
 
-        //lol
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            //print("Atempting to dash");
+            if (Time.time >= (lastDash + dashCooldown))
+            {
+                AttemptToDash();
+            }
+        }
+
+        CheckDash();
 
         animator.SetFloat("YVelocity", rBody.velocity.y);
+    }
+
+    private void AttemptToDash()
+    {
+        isDashing = true;
+        dashTimeLeft = dashTime;
+        lastDash = Time.time;
+        print("Atempting to dash");
+
+        PlayerAfterImagePool.Instance.GetFromPool();
+        lastImageXpos = transform.position.x;
+    }
+
+    private void CheckDash()
+    {
+        if (isDashing)
+        {
+            if(dashTimeLeft > 0)
+            {
+                //print(Time.time);
+                rBody.velocity = new Vector2(dashSpeed * facingDirection, rBody.velocity.y);
+                dashTimeLeft -= Time.deltaTime;
+
+                if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
+                {
+                    PlayerAfterImagePool.Instance.GetFromPool();
+                    lastImageXpos = transform.position.x;
+                }
+            }
+
+            if(dashTimeLeft <= 0)
+            {
+                print("Dash ended");
+                Spell.Scatter();
+                isDashing = false;
+            }
+        }
     }
 }
