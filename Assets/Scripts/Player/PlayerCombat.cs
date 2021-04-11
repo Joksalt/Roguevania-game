@@ -13,6 +13,8 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
+    private float[] attackDetails = new float[2];
+
     // Update is called once per frame
     void Update()
     {
@@ -30,14 +32,19 @@ public class PlayerCombat : MonoBehaviour
         // Detect enemies that are in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
+        attackDetails[0] = 40;
+        attackDetails[1] = transform.position.x;
         // Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
+
             Enemy comp = enemy.GetComponent<Enemy>();
             if (comp != null)
             {
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
+            
+            enemy.transform.parent.SendMessage("Damage", attackDetails);
         }
     }
 
