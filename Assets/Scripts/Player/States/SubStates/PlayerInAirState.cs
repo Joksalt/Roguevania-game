@@ -49,7 +49,7 @@ public class PlayerInAirState : PlayerState
         xInput = player.InputHandler.NormInputX;
         jumpInput = player.InputHandler.JumpInput;
         jumpInputStop = player.InputHandler.JumpInputStop;
-        //dashInput = player.InputHandler.DashInput;
+        dashInput = player.InputHandler.DashInput;
 
         CheckJumpMultiplier();
 
@@ -61,10 +61,10 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.JumpState);
         }
-        //else if (dashInput && player.DashState.CheckIfCanDash())
-        //{
-        //    stateMachine.ChangeState(player.DashState);
-        //}
+        else if (dashInput && player.DashState.CheckIfCanDash())
+        {
+            stateMachine.ChangeState(player.DashState);
+        }
         else
         {
             player.CheckIfShouldFlip(xInput);

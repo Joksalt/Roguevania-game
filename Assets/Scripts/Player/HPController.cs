@@ -23,7 +23,7 @@ public class HPController : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(player.CurrentHealth);
+        //Debug.Log(player.CurrentHealth);
         slider.value = player.CurrentHealth;
         HPTextValue.text = $"{player.CurrentHealth} / {player.MaxHealth}";
     }

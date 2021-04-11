@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 5503172226193421154}
   - component: {fileID: 3574081616955065103}
   - component: {fileID: -9170252694614445143}
+  - component: {fileID: 7459695769918422327}
+  - component: {fileID: 2402754799400358987}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -122,7 +124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7937758992311405225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 2915112184955247711}
@@ -344,6 +346,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b212f4fc-f8b4-4e69-b5f3-575d19f0ab1f
     m_ActionName: Gameplay/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3574081616955065103}
+        m_MethodName: OnDashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 808ad15e-bafb-47dc-9f14-ac77fcb82f76
+    m_ActionName: Gameplay/Dash[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -361,6 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8b06335eab4db438093bde7e9a559a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputHoldTime: 0.2
 --- !u!114 &-9170252694614445143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,3 +395,37 @@ MonoBehaviour:
   groundCheck: {fileID: 9213415584830107418}
   ledgeCheck: {fileID: 0}
   ceilingCheck: {fileID: 0}
+--- !u!114 &7459695769918422327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937758992311405225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e2308e37f13b444a8bc7b4115aea91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7937758992311405219}
+  attackPoint: {fileID: 2915112184955247711}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  attackRange: 0.5
+  attackDamage: 40
+--- !u!114 &2402754799400358987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937758992311405225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cb7c19c8df12241ae59324e15086d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 7595778662239109032}
+  fireBallPrefab: {fileID: 1354141383824870943, guid: 7c704e9c9f18dad47957347886f8c1f7,
+    type: 3}

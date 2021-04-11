@@ -31,7 +31,7 @@ public class PlayerGroundedState : PlayerState
         base.Enter();
 
         player.JumpState.ResetAmountOfJumpsLeft();
-        //player.DashState.ResetCanDash();
+        player.DashState.ResetCanDash();
     }
 
     public override void Exit()
@@ -47,7 +47,7 @@ public class PlayerGroundedState : PlayerState
         yInput = player.InputHandler.NormInputY;
         JumpInput = player.InputHandler.JumpInput;
         //grabInput = player.InputHandler.GrabInput;
-        //dashInput = player.InputHandler.DashInput;
+        dashInput = player.InputHandler.DashInput;
 
         if (JumpInput && player.JumpState.CanJump())
         {
@@ -58,10 +58,10 @@ public class PlayerGroundedState : PlayerState
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
         }
-        //else if (dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling)
-        //{
-        //    stateMachine.ChangeState(player.DashState);
-        //}
+        else if (dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling)
+        {
+            stateMachine.ChangeState(player.DashState);
+        }
     }
 
     public override void PhysicsUpdate()
