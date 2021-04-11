@@ -13,11 +13,14 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
     public bool JumpInputStop { get; private set; }
-    //public bool DashInput { get; private set; }
-    //public bool DashInputStop { get; private set; }
+    public bool DashInput { get; private set; }
+    public bool DashInputStop { get; private set; }
+
+    [SerializeField]
+    private float inputHoldTime = 0.2f;
 
     private float jumpInputStartTime;
-    //private float dashInputStartTime;
+    private float dashInputStartTime;
 
     private void Start()
     {
@@ -28,7 +31,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void Update()
     {
         //CheckJumpInputHoldTime();
-        //CheckDashInputHoldTime();
+        CheckDashInputHoldTime();
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -70,35 +73,36 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    //public void OnDashInput(InputAction.CallbackContext context)
-    //{
-    //    if (context.started)
-    //    {
-    //        DashInput = true;
-    //        DashInputStop = false;
-    //        dashInputStartTime = Time.time;
-    //    }
-    //    else if (context.canceled)
-    //    {
-    //        DashInputStop = true;
-    //    }
-    //}
+    public void OnDashInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Dash input registered");
+        if (context.started)
+        {
+            DashInput = true;
+            DashInputStop = false;
+            dashInputStartTime = Time.time;
+        }
+        else if (context.canceled)
+        {
+            DashInputStop = true;
+        }
+    }
 
     public void OnDashDirectionInput(InputAction.CallbackContext context)
     {
-        RawDashDirectionInput = context.ReadValue<Vector2>();
+        //RawDashDirectionInput = context.ReadValue<Vector2>();
 
-        if (playerInput.currentControlScheme == "Keyboard")
-        {
-            RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
-        }
+        //if (playerInput.currentControlScheme == "Keyboard")
+        //{
+        //    RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
+        //}
 
-        DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
+        //DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
     }
 
     public void UseJumpInput() => JumpInput = false;
 
-    //public void UseDashInput() => DashInput = false;
+    public void UseDashInput() => DashInput = false;
 
     //private void CheckJumpInputHoldTime()
     //{
@@ -108,11 +112,11 @@ public class PlayerInputHandler : MonoBehaviour
     //    }
     //}
 
-    //private void CheckDashInputHoldTime()
-    //{
-    //    if (Time.time >= dashInputStartTime + inputHoldTime)
-    //    {
-    //        DashInput = false;
-    //    }
-    //}
+    private void CheckDashInputHoldTime()
+    {
+        if (Time.time >= dashInputStartTime + inputHoldTime)
+        {
+            DashInput = false;
+        }
+    }
 }
