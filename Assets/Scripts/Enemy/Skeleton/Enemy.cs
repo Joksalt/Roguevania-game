@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log("Skeleton has taken damage");
+        Debug.Log(currentHealth);
         animator.SetTrigger("Hurt");
 
         // Play hurt animation
