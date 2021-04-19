@@ -6,12 +6,22 @@ public class InteractionObject : MonoBehaviour
 {
     //If true, object can be stored in inventory
     public bool inventory;
+    //If true, object diplays its goods
     public bool shop;
+
 
     public void DoInteraction()
     {
+        if(gameObject.name == "iron")
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void OpenShop()
+    {
         //Interact with shop NPC
-        if(gameObject.name == "NPC")
+        if (gameObject.name == "NPC")
         {
             GameObject shop = gameObject.transform.Find("Shop_UI").gameObject;
             if (shop.activeSelf)
@@ -19,14 +29,5 @@ public class InteractionObject : MonoBehaviour
             else
                 shop.SetActive(true);
         }
-
-        if(gameObject.name == "iron")
-        {
-            gameObject.SetActive(false);
-        }
-
-        //Turn on Shop UI
-        //GameObject shop = GameObject.Find("Shop_UI");
-        //shop.SetActive(false);
     }
 }

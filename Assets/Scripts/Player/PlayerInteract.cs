@@ -19,9 +19,14 @@ public class PlayerInteract : MonoBehaviour
                 inventory.AddItem(currentInterObj);
             }
 
+            if (currentInterObjScript.shop)
+            {
+                currentInterObj.SendMessage("OpenShop");
+            }
+
             //Do something with the object
 
-            currentInterObj.SendMessage("DoInteraction");
+            //currentInterObj.SendMessage("DoInteraction");
         }
     }
 
