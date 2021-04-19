@@ -30,6 +30,6 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
-  CurrentHealth: 100
+  CurrentHealth: 60
   MaxHealth: 100
   Gold: 100

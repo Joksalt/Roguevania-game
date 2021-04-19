@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     public GameObject[] inventory = new GameObject[10];
+    public Button[] inventoryButtons = new Button[10];
 
     public void AddItem(GameObject item)
     {
@@ -14,8 +16,11 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < inventory.Length; i++)
         {
             if(inventory[i] == null)
-            {
+            {                
+                //Adding item to inventory
                 inventory[i] = item;
+                //Updating inventory's UI 
+                inventoryButtons[i].image.overrideSprite = item.GetComponent<SpriteRenderer>().sprite;
                 itemAdded = true;
                 item.SendMessage("DoInteraction");
                 Debug.Log(item.name + " was added");
@@ -72,6 +77,9 @@ public class Inventory : MonoBehaviour
                 // We found the item - remove it 
                 inventory[i] = null;
                 Debug.Log($"Item {item.name} was removed from inventory!");
+
+                // Update UI
+                inventoryButtons[i].image.overrideSprite = null;
                 break;
             }
         }
