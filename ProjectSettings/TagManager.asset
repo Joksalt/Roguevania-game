@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - interObject
+  - shop
   layers:
   - Default
   - TransparentFX

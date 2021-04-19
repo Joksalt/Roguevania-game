@@ -17,6 +17,14 @@ MonoBehaviour:
   amountOfJumps: 1
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.3
+  dashCooldown: 0.5
+  maxHoldTime: 1
+  holdTimeScale: 0.25
+  dashTime: 0.2
+  dashVelocity: 30
+  drag: 10
+  dashEndYMultiplier: 0.2
+  distBetweenAfterImages: 0.5
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:
@@ -24,3 +32,4 @@ MonoBehaviour:
     m_Bits: 2048
   CurrentHealth: 100
   MaxHealth: 100
+  Gold: 100
