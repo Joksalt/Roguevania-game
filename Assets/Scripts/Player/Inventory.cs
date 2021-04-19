@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     {
         bool itemAdded = false;
 
-        //Find first open slot in inventory
+        // Find first open slot in inventory
         for (int i = 0; i < inventory.Length; i++)
         {
             if(inventory[i] == null)
@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        //Inventory was full
+        // Inventory was full
         if (!itemAdded)
         {
             Debug.Log("Inventory is full - item not added");
@@ -36,12 +36,44 @@ public class Inventory : MonoBehaviour
         {
             if(inventory[i] == item)
             {
-                //Item found 
+                // Item found 
                 return true;
             }
         }
 
-        //Item not found
+        // Item not found
         return false;
+    }
+
+    public GameObject FindItemByType(string itemType)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if(inventory[i] != null)
+            {
+                if(inventory[i].GetComponent<InteractionObject>().itemType == itemType)
+                {
+                    // We found the item of the type we are looking for 
+                    return inventory[i];
+                }
+            }
+        }
+
+        // Item of type not found 
+        return null;
+    }
+
+    public void RemoveItem(GameObject item)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if(inventory[i]== item)
+            {
+                // We found the item - remove it 
+                inventory[i] = null;
+                Debug.Log($"Item {item.name} was removed from inventory!");
+                break;
+            }
+        }
     }
 }

@@ -4,30 +4,41 @@ using UnityEngine;
 
 public class InteractionObject : MonoBehaviour
 {
-    //If true, object can be stored in inventory
+    // If true, object can be stored in inventory
     public bool inventory;
-    //If true, object diplays its goods
+    // If true, object diplays its goods
     public bool shop;
-
+    // If true, object can talk
+    public bool talks;
+    // Objects message if it talks
+    public string message;
+    // This will tell what type of item this object is 
+    public string itemType;
 
     public void DoInteraction()
     {
-        if(gameObject.name == "iron")
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 
     public void OpenShop()
     {
-        //Interact with shop NPC
+        // Interact with shop NPC
         if (gameObject.name == "NPC")
         {
             GameObject shop = gameObject.transform.Find("Shop_UI").gameObject;
             if (shop.activeSelf)
                 shop.SetActive(false);
             else
+            {
+                Debug.Log(message);
                 shop.SetActive(true);
+            }
+                
         }
+    }
+
+    public void Talk()
+    {
+        Debug.Log(message);
     }
 }
