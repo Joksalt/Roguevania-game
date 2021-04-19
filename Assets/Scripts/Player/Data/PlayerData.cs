@@ -34,4 +34,5 @@ public class PlayerData : ScriptableObject
     [Header("Gameplay")]
     public int CurrentHealth = 100;
     public int MaxHealth = 100;
+    public int Gold = 100;
 }
