@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public PlayerData playerData;
-    // An object thay we currently can interact
+    // An object that we currently can interact
     public GameObject currentInterObj = null;
     public InteractionObject currentInterObjScript = null;
     public Inventory inventory;
@@ -34,7 +34,6 @@ public class PlayerInteract : MonoBehaviour
             }
 
             // Do something with the object
-
             //currentInterObj.SendMessage("DoInteraction");
         }
 
@@ -53,6 +52,22 @@ public class PlayerInteract : MonoBehaviour
                 inventory.RemoveItem(food);
             }
         }
+
+        // Use powerup item
+        if(Input.GetButtonDown("Use powerup"))
+        {
+            GameObject powerup = inventory.FindItemByType("powerup");
+
+            if(powerup != null)
+            {
+                // Do something to players character
+
+
+                inventory.RemoveItem(powerup);
+            }
+        }
+
+
     }
 
     void OnTriggerEnter2D(Collider2D other)

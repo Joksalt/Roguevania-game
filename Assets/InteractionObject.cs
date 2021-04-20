@@ -10,6 +10,8 @@ public class InteractionObject : MonoBehaviour
     public bool shop;
     // If true, object can talk
     public bool talks;
+    // If true, item gives power
+    public bool powerup;
     // Objects message if it talks
     public string message;
     // This will tell what type of item this object is 
