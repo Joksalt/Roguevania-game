@@ -9,6 +9,9 @@ public class SceneLoader : MonoBehaviour
     public int iLevelToLoad;
     public string sLevelToLoad;
 
+    public Inventory inventory;
+
+
     public bool useIntegerToLoadLevel = false;
     void Start()
     {
@@ -35,6 +38,7 @@ public class SceneLoader : MonoBehaviour
         print("test");
         if (useIntegerToLoadLevel)
         {
+            //DontDestroyOnLoad(inventory);
             SceneManager.LoadScene(iLevelToLoad);
         }
         else

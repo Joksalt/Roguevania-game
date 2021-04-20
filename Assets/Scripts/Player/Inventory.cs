@@ -8,6 +8,12 @@ public class Inventory : MonoBehaviour
     public GameObject[] inventory = new GameObject[10];
     public Button[] inventoryButtons = new Button[10];
 
+    void Start()
+    {
+        //DontDestroyOnLoad(this.gameObject);
+
+    }
+
     public void AddItem(GameObject item)
     {
         bool itemAdded = false;
@@ -19,6 +25,7 @@ public class Inventory : MonoBehaviour
             {                
                 //Adding item to inventory
                 inventory[i] = item;
+                DontDestroyOnLoad(inventory[i]);
                 //Updating inventory's UI 
                 inventoryButtons[i].image.overrideSprite = item.GetComponent<SpriteRenderer>().sprite;
                 itemAdded = true;
