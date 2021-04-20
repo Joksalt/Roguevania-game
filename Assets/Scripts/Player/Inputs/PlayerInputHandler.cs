@@ -6,6 +6,9 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerInput playerInput;
     private Camera cam;
 
+    public Player player;
+    Vector3 origScale;
+
     public Vector2 RawMovementInput { get; private set; }
     public Vector2 RawDashDirectionInput { get; private set; }
     public Vector2Int DashDirectionInput { get; private set; }
@@ -24,6 +27,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Start()
     {
+        origScale = player.transform.localScale;
         playerInput = GetComponent<PlayerInput>();
         cam = Camera.main;
     }
@@ -85,6 +89,24 @@ public class PlayerInputHandler : MonoBehaviour
         {
             DashInputStop = true;
         }
+    }
+
+    public void PowerUpTestGrow(InputAction.CallbackContext context)
+    {
+        
+
+        Debug.Log("make it big");
+        player.transform.localScale = new Vector3(4f, 4f, 1);
+        player.transform.position = new Vector2(player.transform.position.x + 0.4f, player.transform.position.y);
+
+        Invoke("Shrink", 5.0f);
+    }
+
+    public void Shrink()
+    {
+        player.transform.localScale = origScale;
+        player.transform.position = new Vector2(player.transform.position.x - 0.4f, player.transform.position.y);
+        Debug.Log("Shrink");
     }
 
     public void UseJumpInput() => JumpInput = false;
