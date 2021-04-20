@@ -30,8 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Update()
     {
-        //CheckJumpInputHoldTime();
-        CheckDashInputHoldTime();
+
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -88,35 +87,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    public void OnDashDirectionInput(InputAction.CallbackContext context)
-    {
-        //RawDashDirectionInput = context.ReadValue<Vector2>();
-
-        //if (playerInput.currentControlScheme == "Keyboard")
-        //{
-        //    RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
-        //}
-
-        //DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
-    }
-
     public void UseJumpInput() => JumpInput = false;
 
     public void UseDashInput() => DashInput = false;
-
-    //private void CheckJumpInputHoldTime()
-    //{
-    //    if (Time.time >= jumpInputStartTime + inputHoldTime)
-    //    {
-    //        JumpInput = false;
-    //    }
-    //}
-
-    private void CheckDashInputHoldTime()
-    {
-        if (Time.time >= dashInputStartTime + inputHoldTime)
-        {
-            DashInput = false;
-        }
-    }
 }

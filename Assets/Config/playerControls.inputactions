@@ -28,14 +28,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "DashDirection",
-                    "type": "Value",
-                    "id": "72e7848e-4238-440b-a78e-a8e3aabfeef6",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -124,17 +116,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce74a4d7-e5a7-42cb-839d-d69b453eafc4",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DashDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
