@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - interObject
+  - shop
   layers:
   - Default
   - TransparentFX
@@ -18,8 +20,8 @@ TagManager:
   - Player
   - Background
   - Projectile
-  - 
-  - 
+  - Ground
+  - Damageable
   - 
   - 
   - 
@@ -54,6 +56,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3872621363
+    locked: 0
+  - name: Enemy
+    uniqueID: 3540928739
     locked: 0
   - name: Foreground
     uniqueID: 3374568763
