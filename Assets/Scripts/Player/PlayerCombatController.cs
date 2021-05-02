@@ -31,8 +31,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void CheckAttackHitBox()
     {
-
-        anim.SetTrigger("Attack");
+        //anim.SetTrigger("Attack");
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attack1HitBoxPos.position, attack1Radius, whatIsDamageable);
 
         attackDetails[0] = attack1Damage;

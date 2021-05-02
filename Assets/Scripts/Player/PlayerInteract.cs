@@ -48,6 +48,7 @@ public class PlayerInteract : MonoBehaviour
 
             // Do something with the object
             //currentInterObj.SendMessage("DoInteraction");
+            currentInterObjScript.GenericInteraction();
         }
 
         // Use a food to heal yourself
@@ -123,6 +124,7 @@ public class PlayerInteract : MonoBehaviour
             if (other.gameObject == currentInterObj)
             {
                 currentInterObj = null;
+                currentInterObjScript.GenericLeave();
             }
         }        
     }

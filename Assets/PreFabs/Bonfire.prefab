@@ -10,9 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3224266395558367139}
   - component: {fileID: 3224266395558367148}
+  - component: {fileID: 6905291407867636933}
+  - component: {fileID: 6530184946743407365}
+  - component: {fileID: 5279968159594386987}
   m_Layer: 0
   m_Name: Bonfire
-  m_TagString: Untagged
+  m_TagString: interObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,11 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3224266395558367149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.21, y: -4.19, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.84903634, y: 0.68609, z: 0.68609}
   m_Children:
-  - {fileID: 3220396358119948683}
-  - {fileID: 3224266396205457116}
+  - {fileID: 5262559555659163023}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -83,6 +85,91 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6905291407867636933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224266395558367149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b089514305d68f14786fb4085718beb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Data: {fileID: 11400000, guid: 79c4dc9cbdebb864c8d4ef66c10b786b, type: 2}
+--- !u!114 &6530184946743407365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224266395558367149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702cd71fd7891554ead083053b6e1da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: 0
+  shop: 0
+  talks: 0
+  powerup: 0
+  message: 
+  itemType: bonfire
+  IntercationEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6905291407867636933}
+        m_MethodName: OnInteraction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  LeaveEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6905291407867636933}
+        m_MethodName: OnLeave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!61 &5279968159594386987
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224266395558367149}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.359375}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.90625, y: 0.71875}
+    newSize: {x: 1.90625, y: 0.71875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.90625, y: 0.71875}
+  m_EdgeRadius: 0
 --- !u!1 &3224266396205457118
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +198,7 @@ Transform:
   m_LocalPosition: {x: -0.05889024, y: 0.67046607, z: 0}
   m_LocalScale: {x: 1.1778059, y: 1.4575348, z: 1.4575348}
   m_Children: []
-  m_Father: {fileID: 3224266395558367139}
+  m_Father: {fileID: 5262559555659163023}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3224266396205457117
@@ -155,16 +242,52 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &7936024603327900298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5262559555659163023}
+  m_Layer: 0
+  m_Name: Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5262559555659163023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7936024603327900298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3220396358119948683}
+  - {fileID: 3224266396205457116}
+  m_Father: {fileID: 3224266395558367139}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3224266395545790131
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3224266395558367139}
+    m_TransformParent: {fileID: 5262559555659163023}
     m_Modifications:
     - target: {fileID: 1400517151494326, guid: 69e62f89c9d82ba4085d34eeff6f57bc, type: 3}
       propertyPath: m_Name
       value: PF FX Fire Bowl Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400517151494326, guid: 69e62f89c9d82ba4085d34eeff6f57bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4433612297463608, guid: 69e62f89c9d82ba4085d34eeff6f57bc, type: 3}
       propertyPath: m_RootOrder

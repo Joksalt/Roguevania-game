@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractionObject : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class InteractionObject : MonoBehaviour
     public string message;
     // This will tell what type of item this object is 
     public string itemType;
+
+    public UnityEvent IntercationEvent;
+    public UnityEvent LeaveEvent;
 
     public void DoInteraction()
     {
@@ -36,6 +40,22 @@ public class InteractionObject : MonoBehaviour
                 shop.SetActive(true);
             }
                 
+        }
+    }
+
+    public void GenericInteraction()
+    {
+        if (IntercationEvent != null)
+        {
+            IntercationEvent.Invoke();
+        }
+    }
+
+    public void GenericLeave()
+    {
+        if (LeaveEvent != null)
+        {
+            LeaveEvent.Invoke();
         }
     }
 
