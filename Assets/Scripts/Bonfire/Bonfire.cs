@@ -43,14 +43,14 @@ public class Bonfire : MonoBehaviour
         Debug.Log("Interacted with bonfire");
 
         // On first interaction light the bonfire
-        //if (!BonfireGameState.Locations[LocationIndex].IsLit)
-        //{
+        if (!BonfireGameState.Locations[LocationIndex].IsLit)
+        {
             BonfireGameState.Locations[LocationIndex].IsLit = true;
 
             // Regenerate UI
             GameObject go = UI.transform.Find("OptionsPanel/Grid").gameObject;
             go.GetComponent<BonfireDropdown>().GenerateOptions();
-        //}
+        }
 
         // Show/Hide UI
         if (UI.GetComponent<Canvas>().enabled)

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerInAirState InAirState { get; private set; }
     public PlayerLandState LandState { get; private set; }
     public PlayerDashState DashState { get; private set; }
+    public PlayerAttackState AttackState { get; private set; }
 
     [SerializeField]
     public PlayerData playerData;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     public Transform DashDirectionIndicator { get; private set; }
     public BoxCollider2D MovementCollider { get; private set; }
+    public AudioSource AudioSource { get; private set; } 
     #endregion
 
     #region Check Transforms
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
     private Transform ledgeCheck;
     [SerializeField]
     private Transform ceilingCheck;
+    [SerializeField]
+    private Transform attackCheck;
 
     #endregion
 
@@ -56,6 +60,7 @@ public class Player : MonoBehaviour
         InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
         LandState = new PlayerLandState(this, StateMachine, playerData, "idle");
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");
+        AttackState = new PlayerAttackState(this, StateMachine, playerData, "attack");
 
     }
 
@@ -66,6 +71,7 @@ public class Player : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         DashDirectionIndicator = transform.Find("DashDirectionIndicator");
         MovementCollider = GetComponent<BoxCollider2D>();
+        AudioSource = GetComponent<AudioSource>();
 
         FacingDirection = 1;
 
@@ -146,6 +152,13 @@ public class Player : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    public Collider2D[] CheckHit()
+    {
+        // Detect enemies that are in range of attack
+        Collider2D[] hits = Physics2D.OverlapCircleAll(this.attackCheck.position, this.playerData.AttackRange);
+        return hits;
     }
 
     #endregion

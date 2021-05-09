@@ -1,6 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public class AudioOptions
+{
+    public string AudioName;
+    public AudioClip Audio;
+}
 
 [CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
 public class PlayerData : ScriptableObject
@@ -26,6 +34,10 @@ public class PlayerData : ScriptableObject
     public float dashEndYMultiplier = 0.2f;
     public float distBetweenAfterImages = 0.5f;
 
+    [Header("Combat")]
+    public float AttackDamage = 10.0f;
+    public float AttackRange = 0.5f;
+
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;
     public float wallCheckDistance = 0.5f;
@@ -35,4 +47,20 @@ public class PlayerData : ScriptableObject
     public int CurrentHealth = 100;
     public int MaxHealth = 100;
     public int Gold = 100;
+
+    [Header("Audio")]
+    public AudioOptions[] AudioOptions;
+
+    public AudioOptions AudioOption(string name)
+    {
+        for(int i = 0; i < AudioOptions.Length; i++)
+        {
+            if (AudioOptions[i].AudioName == name)
+            {
+                return AudioOptions[i];
+            }
+        }
+
+        return null;
+    }
 }

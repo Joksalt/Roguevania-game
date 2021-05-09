@@ -25,11 +25,28 @@ MonoBehaviour:
   drag: 10
   dashEndYMultiplier: 0.2
   distBetweenAfterImages: 0.5
+  AttackDamage: 10
+  AttackRange: 0.5
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
-  CurrentHealth: 60
+  CurrentHealth: 80
   MaxHealth: 100
   Gold: 100
+  AudioOptions:
+  - AudioName: Dash
+    Audio: {fileID: 0}
+  - AudioName: Idle
+    Audio: {fileID: 0}
+  - AudioName: InAir
+    Audio: {fileID: 0}
+  - AudioName: Jump
+    Audio: {fileID: 0}
+  - AudioName: Land
+    Audio: {fileID: 0}
+  - AudioName: Move
+    Audio: {fileID: 8300000, guid: 9b713c76b05f8b04882a23a60605b0d2, type: 3}
+  - AudioName: Attack
+    Audio: {fileID: 8300000, guid: a37f44cbf8c2a7443a3c361efa2f233a, type: 3}

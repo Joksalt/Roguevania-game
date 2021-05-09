@@ -13,6 +13,7 @@ public class PlayerGroundedState : PlayerState
     private bool isGrounded;
     private bool isTouchingLedge;
     private bool dashInput;
+    private bool attackInput;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -48,6 +49,7 @@ public class PlayerGroundedState : PlayerState
         JumpInput = player.InputHandler.JumpInput;
         //grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
+        attackInput = player.InputHandler.AttackInput;
 
         if (JumpInput && player.JumpState.CanJump())
         {
@@ -61,6 +63,10 @@ public class PlayerGroundedState : PlayerState
         else if (dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.DashState);
+        }
+        else if (attackInput)
+        {
+            stateMachine.ChangeState(player.AttackState);
         }
     }
 

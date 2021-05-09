@@ -28,7 +28,6 @@ public class PlayerAbilityState : PlayerState
 
     public override void Exit()
     {
-
         base.Exit();
     }
 
@@ -47,8 +46,6 @@ public class PlayerAbilityState : PlayerState
                 stateMachine.ChangeState(player.InAirState);
             }
         }
-
-
     }
 
     public override void PhysicsUpdate()

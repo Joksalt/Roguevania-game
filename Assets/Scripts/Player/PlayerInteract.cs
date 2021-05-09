@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public Player player;
-    public PlayerCombat playerCombat;
     Vector3 origScale;
     int origDamage;
 
@@ -18,7 +17,7 @@ public class PlayerInteract : MonoBehaviour
 
     void Start()
     {
-        origDamage = playerCombat.attackDamage;
+        //origDamage = playerCombat.attackDamage;
         origScale = player.transform.localScale;
         player = GetComponent<Player>();
     }
@@ -90,7 +89,7 @@ public class PlayerInteract : MonoBehaviour
     {
         Debug.Log("make it big");
 
-        playerCombat.attackDamage = origDamage * 2;
+        //playerCombat.attackDamage = origDamage * 2;
         player.transform.localScale = new Vector3(4f, 4f, 1);
         player.transform.position = new Vector2(player.transform.position.x + 0.4f, player.transform.position.y);
 
@@ -99,7 +98,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void Shrink()
     {
-        playerCombat.attackDamage = origDamage;
+        //playerCombat.attackDamage = origDamage;
         player.transform.localScale = origScale;
         player.transform.position = new Vector2(player.transform.position.x - 0.4f, player.transform.position.y);
         Debug.Log("Shrink");

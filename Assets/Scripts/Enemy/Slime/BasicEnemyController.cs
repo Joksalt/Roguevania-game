@@ -48,15 +48,13 @@ public class BasicEnemyController : MonoBehaviour
         groundDetected,
         wallDetected;
 
-    private GameObject alive;
     private Rigidbody2D aliveRb;
     private Animator aliveAnim;
 
     private void Start()
     {
-        alive = transform.Find("Alive").gameObject;
-        aliveRb = alive.GetComponent<Rigidbody2D>();
-        aliveAnim = alive.GetComponent<Animator>();
+        aliveRb = GetComponent<Rigidbody2D>();
+        aliveAnim = GetComponent<Animator>();
 
         currentHealth = maxHealth;
         facingDirection = 1;
@@ -127,8 +125,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private void EnterDeadState()
     {
-        Instantiate(deathChunkParticle, alive.transform.position, deathChunkParticle.transform.rotation);
-        Instantiate(deathBloodParticle, alive.transform.position, deathBloodParticle.transform.rotation);
+        Instantiate(deathChunkParticle, transform.position, deathChunkParticle.transform.rotation);
+        Instantiate(deathBloodParticle, transform.position, deathBloodParticle.transform.rotation);
         Destroy(gameObject);
     }
 
@@ -142,13 +140,13 @@ public class BasicEnemyController : MonoBehaviour
 
     }
 
-    private void Damage(float[] attackDetails)
+    private void OnPlayerHit(Player player)
     {
-        currentHealth -= attackDetails[0];
+        currentHealth -= player.playerData.AttackDamage;
 
-        Instantiate(hitParticle, alive.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+        Instantiate(hitParticle, transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
 
-        if(attackDetails[1] > alive.transform.position.x)
+        if(player.playerData.AttackRange > transform.position.x)
         {
             damageDirection = -1;
         }
@@ -167,13 +165,14 @@ public class BasicEnemyController : MonoBehaviour
         {
             SwitchState(State.Dead);
         }
+
+        player.AudioSource.PlayOneShot(player.playerData.AudioOption("Attack").Audio);
     }
 
     private void Flip()
     {
         facingDirection *= -1;
-        alive.transform.Rotate(0.0f, 180.0f, 0.0f);
-
+        transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 
     private void SwitchState(State state)

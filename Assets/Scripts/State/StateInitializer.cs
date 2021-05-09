@@ -2,10 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class StateInitializer : MonoBehaviour
 {
     public BonfireData InitialData;
+
+    public AudioMixerGroup EffectGroup;
+    public AudioMixerGroup MusicGroup;
 
     void Start()
     {
@@ -17,5 +21,8 @@ public class StateInitializer : MonoBehaviour
                 BonfireGameState.Locations.Add(InitialData.Locations[i].Clone());
             }
         }
+
+        AudioState.MusicGroup = MusicGroup;
+        AudioState.EffectGroup = EffectGroup;
     }
 }

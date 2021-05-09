@@ -18,6 +18,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool JumpInputStop { get; private set; }
     public bool DashInput { get; private set; }
     public bool DashInputStop { get; private set; }
+    public bool AttackInput { get; private set; }
+    public bool AttackInputStop { get; private set; }
 
     [SerializeField]
     private float inputHoldTime = 0.2f;
@@ -62,7 +64,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-
         if (context.started)
         {
             JumpInput = true;
@@ -78,7 +79,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnDashInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Dash input registered");
         if (context.started)
         {
             DashInput = true;
@@ -91,10 +91,22 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            AttackInput = true;
+            AttackInputStop = false;
+        }
+
+        if (context.canceled)
+        {
+            AttackInputStop = true;
+        }
+    }
+
     public void PowerUpTestGrow(InputAction.CallbackContext context)
     {
-        
-
         Debug.Log("make it big");
         player.transform.localScale = new Vector3(4f, 4f, 1);
         player.transform.position = new Vector2(player.transform.position.x + 0.4f, player.transform.position.y);
@@ -112,4 +124,6 @@ public class PlayerInputHandler : MonoBehaviour
     public void UseJumpInput() => JumpInput = false;
 
     public void UseDashInput() => DashInput = false;
+
+    public void UseAttackInput() => AttackInput = false;
 }

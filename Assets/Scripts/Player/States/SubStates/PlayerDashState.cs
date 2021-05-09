@@ -17,6 +17,7 @@ public class PlayerDashState : PlayerAbilityState
     public PlayerDashState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
+
     public override void Enter()
     {
         base.Enter();
@@ -50,11 +51,6 @@ public class PlayerDashState : PlayerAbilityState
 
         if (!isExitingState)
         {
-
-            player.Anim.SetFloat("yVelocity", player.CurrentVelocity.y);
-            player.Anim.SetFloat("xVelocity", Mathf.Abs(player.CurrentVelocity.x));
-
-
             if (isHolding)
             {
                 //dashDirectionInput = player.InputHandler.DashDirectionInput;

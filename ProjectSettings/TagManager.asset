@@ -22,7 +22,7 @@ TagManager:
   - Projectile
   - Ground
   - Damageable
-  - 
+  - SelectableInversion
   - 
   - 
   - 

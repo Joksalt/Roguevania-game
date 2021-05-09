@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundedState
 {
-    public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) 
+        : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -16,11 +17,14 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+        base.player.AudioSource.clip = base.playerData.AudioOption("Move").Audio;
+        base.player.AudioSource.Play();
     }
 
     public override void Exit()
     {
         base.Exit();
+        base.player.AudioSource.Stop();
     }
 
     public override void LogicUpdate()

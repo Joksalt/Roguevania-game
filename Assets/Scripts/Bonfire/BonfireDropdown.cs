@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -9,6 +10,7 @@ using UnityEngine.UIElements;
 public class BonfireDropdown : MonoBehaviour
 {
     public GameObject OptionButton;
+    public AudioClip OnInteract;
 
     void Start()
     {
@@ -45,12 +47,14 @@ public class BonfireDropdown : MonoBehaviour
     {
         Debug.Log("Warping to " + bonfire.LocationName);
         BonfireGameState.BonfireLocation = bonfire.LocationName;
+        this.GetComponent<AudioSource>().outputAudioMixerGroup = AudioState.EffectGroup;
+        this.GetComponent<AudioSource>().PlayOneShot(OnInteract);
         StartCoroutine(LoadScene(bonfire));
     }
 
     IEnumerator LoadScene(BonfireLocation bonfire)
     {
-        yield return null;
+        yield return new WaitForSeconds(OnInteract.length - 1.0f);
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(bonfire.Scene);
         asyncOperation.allowSceneActivation = false;
@@ -58,7 +62,7 @@ public class BonfireDropdown : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             if (asyncOperation.progress >= 0.9f)
-            {    
+            {
                 asyncOperation.allowSceneActivation = true;
             }
 
