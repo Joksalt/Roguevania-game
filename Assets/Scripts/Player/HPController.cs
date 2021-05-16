@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HPController : MonoBehaviour
@@ -26,5 +27,11 @@ public class HPController : MonoBehaviour
         //Debug.Log(player.CurrentHealth);
         slider.value = player.CurrentHealth;
         HPTextValue.text = $"{player.CurrentHealth} / {player.MaxHealth}";
+
+        if (player.CurrentHealth <= 0)
+        {
+            // Game over
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

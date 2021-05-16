@@ -53,16 +53,19 @@ public class PlayerInteract : MonoBehaviour
         // Use a food to heal yourself
         if (Input.GetButtonDown("Use item 1"))
         {
-            // Check the inventory for food item
-            GameObject food = inventory.FindItemByType("food");
-
-            if (food != null)
+            if (playerData.CurrentHealth < playerData.MaxHealth)
             {
-                // Use the food - apply its effect
-                playerData.CurrentHealth += 10;
+                // Check the inventory for food item
+                GameObject food = inventory.FindItemByType("food");
 
-                // Remove the food from the inventory
-                inventory.RemoveItem(food);
+                if (food != null)
+                {
+                    // Use the food - apply its effect
+                    playerData.CurrentHealth += 10;
+
+                    // Remove the food from the inventory
+                    inventory.RemoveItem(food);
+                }
             }
         }
 
@@ -92,6 +95,7 @@ public class PlayerInteract : MonoBehaviour
         //playerCombat.attackDamage = origDamage * 2;
         player.transform.localScale = new Vector3(4f, 4f, 1);
         player.transform.position = new Vector2(player.transform.position.x + 0.4f, player.transform.position.y);
+        playerData.AttackDamage *= 2;
 
         Invoke("Shrink", 5.0f);
     }
@@ -101,6 +105,8 @@ public class PlayerInteract : MonoBehaviour
         //playerCombat.attackDamage = origDamage;
         player.transform.localScale = origScale;
         player.transform.position = new Vector2(player.transform.position.x - 0.4f, player.transform.position.y);
+        playerData.AttackDamage /= 2;
+
         Debug.Log("Shrink");
     }
 

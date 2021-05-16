@@ -5,13 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Entrance.unity
-    guid: 4967553926aa1ca4fa2884d8b613efcf
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Hub.unity
     guid: 3bef1326bda4000458bc568e6e8c5d57
   - enabled: 1
     path: Assets/Scenes/Escape.unity
     guid: be675f50022013143bacc2dd9d09d01e
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 0f9f06d3e17fc5f40b616a125bd3af8f
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: b1cd2a5ad0e341447b6a074cb00c1cb9
+  - enabled: 1
+    path: Assets/Scenes/Underworld.unity
+    guid: 2f508b182021b7546a1581d1eebc619b
   m_configObjects: {}

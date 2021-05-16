@@ -11,6 +11,8 @@ public class StateInitializer : MonoBehaviour
     public AudioMixerGroup EffectGroup;
     public AudioMixerGroup MusicGroup;
 
+    public PlayerData PlayerDataRef;
+
     void Start()
     {
         // Load if needed by default deep copy initial data
@@ -24,5 +26,13 @@ public class StateInitializer : MonoBehaviour
 
         AudioState.MusicGroup = MusicGroup;
         AudioState.EffectGroup = EffectGroup;
+
+        PlayerDataRef.CurrentHealth = PlayerDataRef.MaxHealth;
+        PlayerDataRef.Gold = 100;
+
+        for (int i = 0; i < InventoryState.Inventory.Length; i++)
+        {
+            InventoryState.Inventory[i] = null;
+        }
     }
 }

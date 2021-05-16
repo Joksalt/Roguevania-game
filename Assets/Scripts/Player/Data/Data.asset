@@ -32,7 +32,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
-  CurrentHealth: 80
+  CurrentHealth: -30
   MaxHealth: 100
   Gold: 100
   AudioOptions:

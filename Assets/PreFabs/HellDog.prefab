@@ -129,8 +129,8 @@ GameObject:
   - component: {fileID: 3744774815722738683}
   - component: {fileID: 2782159850118270527}
   - component: {fileID: 5618390021185717087}
+  - component: {fileID: 2691628086809869208}
   - component: {fileID: 3555812909188793034}
-  - component: {fileID: 3552697350513623257}
   - component: {fileID: 3744774815722738680}
   m_Layer: 12
   m_Name: HellDog
@@ -227,7 +227,28 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!68 &2691628086809869208
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3744774815722738681}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1, y: 0}
+  - {x: 1, y: 0}
+  - {x: 1, y: -1}
+  - {x: -1, y: -1}
+  - {x: -1, y: 0}
 --- !u!95 &3555812909188793034
 Animator:
   serializedVersion: 3
@@ -247,32 +268,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &3552697350513623257
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3744774815722738681}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0577628, y: -0.5444531}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.643932, y: 0.9374838}
-  m_EdgeRadius: 0
 --- !u!114 &3744774815722738680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +297,9 @@ MonoBehaviour:
     type: 3}
   deathBloodParticle: {fileID: 6290778821818041914, guid: 86d8c126d5e5dcc459aaca61f6ecc486,
     type: 3}
+  damage: 30
+  GoldWorth: 10
+  AttackSound: {fileID: 8300000, guid: ac6034ade498bb94b87620cdf6eac48b, type: 3}
 --- !u!1 &3744774817023833612
 GameObject:
   m_ObjectHideFlags: 0

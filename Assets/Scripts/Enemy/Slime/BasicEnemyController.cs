@@ -34,6 +34,9 @@ public class BasicEnemyController : MonoBehaviour
         deathChunkParticle,
         deathBloodParticle;
 
+    public int damage = 5;
+    public int GoldWorth = 10;
+
     private float 
         currentHealth,
         knockbackStartTime;
@@ -50,6 +53,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private Rigidbody2D aliveRb;
     private Animator aliveAnim;
+
+    public AudioClip AttackSound;
 
     private void Start()
     {
@@ -92,6 +97,24 @@ public class BasicEnemyController : MonoBehaviour
         }
         else
         {
+            // Target the player
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            
+            if (player.transform.position.x < this.transform.position.x)
+            {
+                if (facingDirection != -1)
+                {
+                    Flip();
+                }
+            }
+            else
+            {
+                if (facingDirection != 1)
+                {
+                    Flip();
+                }
+            }
+
             movement.Set(movementSpeed * facingDirection, aliveRb.velocity.y);
             aliveRb.velocity = movement;
         }
@@ -105,7 +128,7 @@ public class BasicEnemyController : MonoBehaviour
     private void EnterKnockbackState()
     {
         knockbackStartTime = Time.time;
-        movement.Set(knockbackSpeed.x * damageDirection, knockbackSpeed.y);
+        movement.Set(knockbackSpeed.x * damageDirection * 2, knockbackSpeed.y);
         aliveRb.velocity = movement;
         aliveAnim.SetBool("Knockback", true);
     }
@@ -146,7 +169,7 @@ public class BasicEnemyController : MonoBehaviour
 
         Instantiate(hitParticle, transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
 
-        if(player.playerData.AttackRange > transform.position.x)
+        if(player.transform.position.x > transform.position.x)
         {
             damageDirection = -1;
         }
@@ -163,6 +186,7 @@ public class BasicEnemyController : MonoBehaviour
         }
         else if(currentHealth <= 0.0f)
         {
+            player.playerData.Gold += GoldWorth;
             SwitchState(State.Dead);
         }
 
@@ -212,4 +236,16 @@ public class BasicEnemyController : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Player p = collision.gameObject.GetComponent<Player>();
+            p.playerData.CurrentHealth -= damage;
+
+            // Knock back
+            p.RB.velocity = new Vector2(knockbackSpeed.x * facingDirection, knockbackSpeed.y);
+            p.AudioSource.PlayOneShot(AttackSound);
+        }
+    }
 }
