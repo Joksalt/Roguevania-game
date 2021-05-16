@@ -24,4 +24,4 @@ MonoBehaviour:
   - LocationName: Lower dungeon spire
     Scene: Escape
     NameInScene: BonfireExit
-    IsLit: 0
+    IsLit: 1
