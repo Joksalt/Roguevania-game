@@ -84130,18 +84130,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1130428823, guid: 71d4d8541ca5e04438d29615eab3e237, type: 3}
-      propertyPath: speed
-      value: 400
-      objectReference: {fileID: 0}
+    - target: {fileID: 26970907, guid: 71d4d8541ca5e04438d29615eab3e237, type: 3}
+      propertyPath: m_PlayableAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c1a099d886115354ab4720bcdb5a3e7f,
+        type: 2}
+    - target: {fileID: 26970907, guid: 71d4d8541ca5e04438d29615eab3e237, type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].key
+      value: 
+      objectReference: {fileID: 3748850060708878025, guid: c1a099d886115354ab4720bcdb5a3e7f,
+        type: 2}
     - target: {fileID: 1130428823, guid: 71d4d8541ca5e04438d29615eab3e237, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1044563925}
-    - target: {fileID: 1130428823, guid: 71d4d8541ca5e04438d29615eab3e237, type: 3}
-      propertyPath: nextWaypointDistance
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 38264685525347232, guid: 71d4d8541ca5e04438d29615eab3e237,
         type: 3}
       propertyPath: m_RootOrder

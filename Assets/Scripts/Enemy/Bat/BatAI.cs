@@ -19,6 +19,7 @@ public class BatAI : MonoBehaviour
     public GameObject hitParticle;
 
     public AudioClip AttackSound;
+    public AudioClip DeathSound;
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
@@ -100,14 +101,20 @@ public class BatAI : MonoBehaviour
     {
         Instantiate(hitParticle, transform.position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
         player.AudioSource.PlayOneShot(player.playerData.AudioOption("Attack").Audio);
-        player.playerData.Gold += GoldWorth;
-        Destroy(gameObject);
+        Die(player);
     }
 
     private void OnPlayerHitRange(Player player)
     {
         Instantiate(hitParticle, transform.position, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
+        Die(player);
+    }
+
+    private void Die(Player player)
+    {
         player.playerData.Gold += GoldWorth;
+        Player p = player.gameObject.GetComponent<Player>();
+        p.AudioSource.PlayOneShot(DeathSound);
         Destroy(gameObject);
     }
 

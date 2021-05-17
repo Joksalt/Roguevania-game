@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1130428824}
   - component: {fileID: 1130428823}
   - component: {fileID: 1130428825}
+  - component: {fileID: 26970907}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -157,12 +158,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   knockbackSpeed: {x: 2, y: 1}
-  damage: 0
+  damage: 2
   hitParticle: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61,
     type: 3}
   AttackSound: {fileID: 8300000, guid: ac6034ade498bb94b87620cdf6eac48b, type: 3}
-  speed: 300
-  nextWaypointDistance: 3
+  DeathSound: {fileID: 8300000, guid: 92ec0cfd85cef5f4c9a65a9d7d8ed72f, type: 3}
+  speed: 400
+  nextWaypointDistance: 0.1
 --- !u!114 &1130428825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +193,22 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!320 &26970907
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38264685525347239}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 0}
+    value: {fileID: 38264685525347238}
+  m_ExposedReferences:
+    m_References: []
