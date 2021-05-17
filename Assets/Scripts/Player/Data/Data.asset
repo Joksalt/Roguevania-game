@@ -32,9 +32,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
-  CurrentHealth: 100
+  CurrentHealth: 20
   MaxHealth: 100
-  Gold: 110
+  Gold: 120
   AudioOptions:
   - AudioName: Dash
     Audio: {fileID: 0}

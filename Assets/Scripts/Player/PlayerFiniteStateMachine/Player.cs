@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -173,6 +174,16 @@ public class Player : MonoBehaviour
     {
         FacingDirection *= -1;
         transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+
+    public void WinGame()
+    {
+        Invoke("WinScene", 3.0f);
+    }
+
+    private void WinScene()
+    {
+        SceneManager.LoadScene("Winner");
     }
     #endregion
 }

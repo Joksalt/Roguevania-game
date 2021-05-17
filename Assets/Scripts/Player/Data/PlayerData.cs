@@ -37,6 +37,7 @@ public class PlayerData : ScriptableObject
     [Header("Combat")]
     public float AttackDamage = 10.0f;
     public float AttackRange = 0.5f;
+    public float RangeDamage = 3.0f;
 
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;
@@ -44,7 +45,7 @@ public class PlayerData : ScriptableObject
     public LayerMask whatIsGround;
 
     [Header("Gameplay")]
-    public int CurrentHealth = 100;
+    public int CurrentHealth = 99;
     public int MaxHealth = 100;
     public int Gold = 100;
 

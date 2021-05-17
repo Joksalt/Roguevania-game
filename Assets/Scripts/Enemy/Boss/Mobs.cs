@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 [RequireComponent(typeof(CanvasGroup))]
 
 public class Mobs : MonoBehaviour
@@ -157,8 +159,12 @@ public class Mobs : MonoBehaviour
 	{
 		Instantiate(deathChunkParticle, transform.position, deathChunkParticle.transform.rotation);
 		Instantiate(deathBloodParticle, transform.position, deathBloodParticle.transform.rotation);
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		player.GetComponent<Player>().WinGame();
 		Destroy(gameObject);
 	}
+
+	
 
 	private void UpdateDeadState()
 	{

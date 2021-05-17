@@ -61,7 +61,7 @@ public class PlayerInteract : MonoBehaviour
                 if (food != null)
                 {
                     // Use the food - apply its effect
-                    playerData.CurrentHealth += 10;
+                    playerData.CurrentHealth = playerData.MaxHealth;
 
                     // Remove the food from the inventory
                     inventory.RemoveItem(food);

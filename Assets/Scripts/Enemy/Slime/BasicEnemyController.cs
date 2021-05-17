@@ -32,7 +32,8 @@ public class BasicEnemyController : MonoBehaviour
     private GameObject
         hitParticle,
         deathChunkParticle,
-        deathBloodParticle;
+        deathBloodParticle,
+        hamPrefab;
 
     public int damage = 5;
     public int GoldWorth = 10;
@@ -150,6 +151,7 @@ public class BasicEnemyController : MonoBehaviour
     {
         Instantiate(deathChunkParticle, transform.position, deathChunkParticle.transform.rotation);
         Instantiate(deathBloodParticle, transform.position, deathBloodParticle.transform.rotation);
+        Instantiate(hamPrefab, transform.position, hamPrefab.transform.rotation);
         Destroy(gameObject);
     }
 
@@ -191,6 +193,42 @@ public class BasicEnemyController : MonoBehaviour
         }
 
         player.AudioSource.PlayOneShot(player.playerData.AudioOption("Attack").Audio);
+    }
+
+    private void OnPlayerHitRange(Player player)
+    {
+        currentHealth -= player.playerData.RangeDamage;
+
+        Instantiate(hitParticle, transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+
+        GameObject playerTemp = GameObject.FindGameObjectWithTag("Player");
+        if (playerTemp.transform.position.x > transform.position.x)
+        {
+            damageDirection = -1;
+        }
+        else
+        {
+            damageDirection = 1;
+        }
+
+        //Hit particle
+
+        if (currentHealth > 0.0f)
+        {
+            SwitchState(State.Knockback);
+        }
+        else if (currentHealth <= 0.0f)
+        {
+            player.playerData.Gold += GoldWorth;
+            SwitchState(State.Dead);
+        }
+
+        player.AudioSource.PlayOneShot(player.playerData.AudioOption("Attack").Audio);
+    }
+
+    private void HitParticle()
+    {
+
     }
 
     private void Flip()
