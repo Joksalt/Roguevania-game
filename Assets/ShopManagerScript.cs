@@ -7,14 +7,17 @@ using UnityEngine.UI;
 public class ShopManagerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[5, 5];
-    public int coins;
     public Text coinsTxt;
+    public Player player;
+    private PlayerData playerData;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        coinsTxt.text = "Coins:" + coins.ToString();
+        playerData = player.GetComponent<Player>().playerData;
+        //coinsTxt.text = "Coins:" + coins.ToString();
+        coinsTxt.text = "Coins:" + playerData.Gold;
 
         //item IDs
         shopItems[1, 1] = 1;
@@ -42,12 +45,16 @@ public class ShopManagerScript : MonoBehaviour
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        if (coins >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID])
+        if (playerData.Gold >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID])
         {
-            coins -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
+            playerData.Gold -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
-            coinsTxt.text = "Coins:" + coins.ToString();
+            coinsTxt.text = "Coins:" + playerData.Gold;
             ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
+        }
+        else
+        {
+            coinsTxt.text = "Insufficient funds!";
         }
     }
 }
