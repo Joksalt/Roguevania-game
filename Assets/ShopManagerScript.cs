@@ -50,7 +50,7 @@ public class ShopManagerScript : MonoBehaviour
             playerData.Gold -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
             coinsTxt.text = "Coins:" + playerData.Gold;
-            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
+            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = "";//shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
         }
         else
         {
