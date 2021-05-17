@@ -31,13 +31,19 @@ public class InteractionObject : MonoBehaviour
         // Interact with shop NPC
         if (gameObject.name == "NPC")
         {
-            GameObject shop = gameObject.transform.Find("Shop_UI").gameObject;
-            if (shop.activeSelf)
-                shop.SetActive(false);
+            //GameObject shop = gameObject.transform.Find("Shop_UI").gameObject;
+            GameObject shopUi = gameObject.transform.Find("Shop_UI2").gameObject;
+            if (/*shop.activeSelf || */shopUi.activeSelf)
+            {
+                //shop.SetActive(false);
+                shopUi.SetActive(false);
+
+            }                
             else
             {
                 Debug.Log(message);
-                shop.SetActive(true);
+                //shop.SetActive(true);
+                shopUi.SetActive(true);
             }
                 
         }
