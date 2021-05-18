@@ -10,14 +10,14 @@ public class ShopManagerScript : MonoBehaviour
     public Text coinsTxt;
     public Player player;
     private PlayerData playerData;
-    private Inventory inventory;
+    public Inventory inventory;
 
 
     // Start is called before the first frame update
     void Start()
     {
         playerData = player.GetComponent<Player>().playerData;
-        inventory = player.GetComponent<Inventory>();
+        //inventory = player.GetComponent<Inventory>();
 
         //coinsTxt.text = "Coins:" + coins.ToString();
         coinsTxt.text = "Coins:" + playerData.Gold;
@@ -55,9 +55,12 @@ public class ShopManagerScript : MonoBehaviour
             shopItems[3, itemID]++;
             coinsTxt.text = "Coins:" + playerData.Gold;
             ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = "";//shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
-
+            
             GameObject shopItem = ButtonRef.GetComponent<ButtonInfo>().item;
-            inventory.AddItem(shopItem);
+            GameObject newItem = Instantiate(shopItem);
+            inventory.AddItem(newItem);
+            
+
         }
         else
         {
