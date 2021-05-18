@@ -9,6 +9,7 @@ TagManager:
   - interObject
   - shop
   - Boss
+  - Event
   layers:
   - Default
   - TransparentFX
