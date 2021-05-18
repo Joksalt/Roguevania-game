@@ -9,6 +9,7 @@ public class ButtonInfo : MonoBehaviour
     public int ItemID;
     public Text PriceTxt;
     public Text QuantityTxt;
+    public GameObject item;
     public GameObject ShopManager;
 
 

@@ -10,8 +10,6 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        //DontDestroyOnLoad(this.gameObject);
-
         // Find first open slot in inventory
         for (int i = 0; i < InventoryState.Inventory.Length; i++)
         {
@@ -99,5 +97,18 @@ public class Inventory : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public bool IsFull()
+    {
+        for(int i = 0; i < InventoryState.Inventory.Length; i++)
+        {
+            if (InventoryState.Inventory[i] == null)
+            {
+                return false;
+            }
+        }
+            
+        return true;
     }
 }

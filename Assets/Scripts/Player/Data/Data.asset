@@ -27,14 +27,15 @@ MonoBehaviour:
   distBetweenAfterImages: 0.5
   AttackDamage: 10
   AttackRange: 0.5
+  RangeDamage: 3
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
-  CurrentHealth: 20
+  CurrentHealth: 84
   MaxHealth: 100
-  Gold: 120
+  Gold: 1870
   AudioOptions:
   - AudioName: Dash
     Audio: {fileID: 0}

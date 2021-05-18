@@ -10,12 +10,15 @@ public class ShopManagerScript : MonoBehaviour
     public Text coinsTxt;
     public Player player;
     private PlayerData playerData;
+    private Inventory inventory;
 
 
     // Start is called before the first frame update
     void Start()
     {
         playerData = player.GetComponent<Player>().playerData;
+        inventory = player.GetComponent<Inventory>();
+
         //coinsTxt.text = "Coins:" + coins.ToString();
         coinsTxt.text = "Coins:" + playerData.Gold;
 
@@ -44,17 +47,28 @@ public class ShopManagerScript : MonoBehaviour
     public void Buy()
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
+        int itemID = ButtonRef.GetComponent<ButtonInfo>().ItemID;
 
-        if (playerData.Gold >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID])
+        if (playerData.Gold >= shopItems[2, itemID] && !inventory.IsFull())
         {
-            playerData.Gold -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
-            shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
+            playerData.Gold -= shopItems[2, itemID];
+            shopItems[3, itemID]++;
             coinsTxt.text = "Coins:" + playerData.Gold;
             ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = "";//shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
+
+            GameObject shopItem = ButtonRef.GetComponent<ButtonInfo>().item;
+            inventory.AddItem(shopItem);
         }
         else
         {
-            coinsTxt.text = "Insufficient funds!";
+            if (inventory.IsFull())
+            {
+                coinsTxt.text = "Inventory Full!";
+            }
+            else
+            {
+                coinsTxt.text = "Insufficient funds!";
+            }
         }
     }
 }
